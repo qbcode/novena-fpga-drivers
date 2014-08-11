@@ -4,8 +4,11 @@ EXEC=novena-fpga
 MY_CFLAGS += -Wall -O0 -g
 MY_LIBS +=
 
-all: $(OBJECTS)
+all: $(OBJECTS) devmem2
 	$(CC) $(LIBS) $(LDFLAGS) $(OBJECTS) $(MY_LIBS) -o $(EXEC)
+
+devmem2: devmem2.o
+	$(CC) $(LIBS) $(LDFLAGS) $< -o devmem2
 
 clean:
 	rm -f $(EXEC) $(OBJECTS)
